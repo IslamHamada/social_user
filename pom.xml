@@ -89,6 +89,16 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>11.17.0</version>
+				<configuration>
+					<url>jdbc:mysql://localhost:3306/social_user</url>
+					<user>root</user>
+					<password>${MYSQL_PASSWORD}</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

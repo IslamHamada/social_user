@@ -1,6 +1,11 @@
 spring:
   application:
     name: user
+  datasource:
+    url: jdbc:mysql://localhost:3306/social_user?createDatabaseIfNotExist=true
+    username: root
+    password: ${MYSQL_PASSWORD}
+    driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: validate

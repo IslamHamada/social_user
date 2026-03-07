@@ -1,0 +1,1 @@
+ALTER TABLE users add column auth0_id varchar(100);

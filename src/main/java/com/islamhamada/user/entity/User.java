@@ -16,7 +16,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @Column(unique = true, name = "auth0_id")
     String auth0Id;
+    @Column(unique = true)
     String username;
+    @Column(unique = true)
     String email;
 }

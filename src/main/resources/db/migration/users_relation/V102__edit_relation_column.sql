@@ -1,0 +1,1 @@
+alter table users_relation modify column relation ENUM("FRIEND", "SENDING_FRIENDSHIP_REQUEST", "RECEIVING_FRIENDSHIP_REQUEST", "BLOCKING", "BLOCKED")

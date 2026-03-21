@@ -22,4 +22,5 @@ public class User {
     String username;
     @Column(unique = true)
     String email;
+    byte[] pic;
 }

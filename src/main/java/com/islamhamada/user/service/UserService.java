@@ -15,4 +15,5 @@ public interface UserService {
     List<UserDTO> getFriends(String username);
     List<UserDTO> searchByKeyword(String keyword);
     byte[] getPic(String username);
+    byte[] changePic(String username, MultipartFile pic) throws IOException;
 }

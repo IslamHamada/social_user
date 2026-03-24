@@ -124,4 +124,11 @@ public class UserServiceImpl implements UserService{
         User user =  userRepository.findByUsername(username).orElseThrow();
         return user.getPic();
     }
+
+    @Override
+    public byte[] changePic(String username, MultipartFile pic) throws IOException {
+        User user = userRepository.findByUsername(username).orElseThrow();
+        user.setPic(pic.getBytes());
+        return userRepository.save(user).getPic();
+    }
 }

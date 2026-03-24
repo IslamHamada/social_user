@@ -53,4 +53,22 @@ public class UserServiceImpl implements UserService{
         else
             return usersRelation.get().getRelation() + "";
     }
+
+    @Override
+    public void sendFriendRequest(String username1, String username2) {
+        User user1 = userRepository.findByUsername(username1).orElseThrow();
+        User user2 = userRepository.findByUsername(username2).orElseThrow();
+        UsersRelation relation = UsersRelation.builder()
+                .user1(user1)
+                .user2(user2)
+                .relation(Relation.SENDING_FRIENDSHIP_REQUEST)
+                .build();
+        usersRelationRepository.save(relation);
+        UsersRelation relation2 = UsersRelation.builder()
+                .user1(user2)
+                .user2(user1)
+                .relation(Relation.RECEIVING_FRIENDSHIP_REQUEST)
+                .build();
+        usersRelationRepository.save(relation2);
+    }
 }

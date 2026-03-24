@@ -9,4 +9,5 @@ public interface UserService {
     List<UserDTO> getUsers();
     void registerUser(RegisterUserRequest request);
     String getRelation(String username1, String username2);
+    void sendFriendRequest(String username1, String username2);
 }

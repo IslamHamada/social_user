@@ -13,4 +13,5 @@ public interface UserService {
     void cancelFriendRequest(String username1, String username2);
     void acceptFriendRequest(String username1, String username2);
     List<UserDTO> getFriends(String username);
+    List<UserDTO> searchByKeyword(String keyword);
 }

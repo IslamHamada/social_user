@@ -81,4 +81,16 @@ public class UserServiceImpl implements UserService{
         usersRelationRepository.deleteById(relation1.getId());
         usersRelationRepository.deleteById(relation2.getId());
     }
+
+    @Override
+    public void acceptFriendRequest(String username1, String username2) {
+        User user1 = userRepository.findByUsername(username1).orElseThrow();
+        User user2 = userRepository.findByUsername(username2).orElseThrow();
+        UsersRelation relation1 = usersRelationRepository.findByUser1AndUser2(user1, user2).orElseThrow();
+        UsersRelation relation2 = usersRelationRepository.findByUser1AndUser2(user2, user1).orElseThrow();
+        relation1.setRelation(Relation.FRIEND);
+        relation2.setRelation(Relation.FRIEND);
+        usersRelationRepository.save(relation1);
+        usersRelationRepository.save(relation2);
+    }
 }

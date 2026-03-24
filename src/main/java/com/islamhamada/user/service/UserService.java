@@ -11,4 +11,5 @@ public interface UserService {
     String getRelation(String username1, String username2);
     void sendFriendRequest(String username1, String username2);
     void cancelFriendRequest(String username1, String username2);
+    void acceptFriendRequest(String username1, String username2);
 }

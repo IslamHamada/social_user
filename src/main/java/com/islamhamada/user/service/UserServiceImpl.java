@@ -118,4 +118,10 @@ public class UserServiceImpl implements UserService{
                 .toList();
         return userDTOS;
     }
+
+    @Override
+    public byte[] getPic(String username) {
+        User user =  userRepository.findByUsername(username).orElseThrow();
+        return user.getPic();
+    }
 }

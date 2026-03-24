@@ -14,4 +14,5 @@ public interface UserService {
     void acceptFriendRequest(String username1, String username2);
     List<UserDTO> getFriends(String username);
     List<UserDTO> searchByKeyword(String keyword);
+    byte[] getPic(String username);
 }

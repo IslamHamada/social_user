@@ -93,4 +93,17 @@ public class UserServiceImpl implements UserService{
         usersRelationRepository.save(relation1);
         usersRelationRepository.save(relation2);
     }
+
+    @Override
+    public List<UserDTO> getFriends(String username) {
+        User user1 = userRepository.findByUsername(username).orElseThrow();
+        List<UsersRelation> relations = usersRelationRepository.findByUser1AndRelation(user1, Relation.FRIEND);
+        List<User> users = relations.stream().map(r -> r.getUser2()).toList();
+        List<UserDTO> userDTOS = users.stream()
+                .map(user -> UserDTO.builder()
+                        .email(user.getEmail())
+                        .username(user.getUsername())
+                        .build()).toList();
+        return userDTOS;
+    }
 }

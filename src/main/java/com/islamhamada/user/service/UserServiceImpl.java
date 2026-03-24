@@ -42,4 +42,15 @@ public class UserServiceImpl implements UserService{
             userRepository.save(user2);
         }
     }
+
+    @Override
+    public String getRelation(String username1, String username2) {
+        User user1 = userRepository.findByUsername(username1).orElseThrow();
+        User user2 = userRepository.findByUsername(username2).orElseThrow();
+        Optional<UsersRelation> usersRelation = usersRelationRepository.findByUser1AndUser2(user1, user2);
+        if(usersRelation.isEmpty())
+            return "STRANGER";
+        else
+            return usersRelation.get().getRelation() + "";
+    }
 }
